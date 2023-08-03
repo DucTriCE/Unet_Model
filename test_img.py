@@ -26,7 +26,9 @@ def Run(model, img):
     return img_rs
 
 model = CNN()
-model.load_state_dict(torch.load('pretrained/model_data2.pth'))
+checkpoint = torch.load('trained_model/best.pth')
+model.load_state_dict(checkpoint["state_dict"])
+
 model.eval()
 image_list = os.listdir('test_images')
 shutil.rmtree('results')
